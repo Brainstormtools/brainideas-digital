@@ -110,16 +110,16 @@ export default function ServicesSection({
             {SERVICES.map((service) => (
               <div 
                 key={service.id}
-                className="group bg-slate-50/60 border border-slate-200/70 rounded-2xl p-6 transition-all duration-300 flex flex-col justify-between shadow-sm"
+                className="group bg-slate-50/60 border border-slate-200/70 rounded-2xl p-6 transition-all duration-300 flex flex-col justify-between shadow-sm hover:border-indigo-200 hover:bg-slate-50"
               >
                 <div>
-                  <div className="bg-indigo-50 group-hover:bg-indigo-600 p-3.5 rounded-2xl w-fit text-indigo-600 group-hover:text-white mb-6 transition-colors duration-300 shadow-inner">
+                  <div className="bg-indigo-50 group-hover:bg-indigo-100 p-3.5 rounded-2xl w-fit text-indigo-600 group-hover:text-indigo-700 mb-6 transition-colors duration-300 shadow-inner">
                     <DynamicIcon name={service.iconName} className="w-6 h-6" aria-hidden="true" />
                   </div>
-                  <h3 className="text-lg font-bold text-slate-950 group-hover:text-white mb-3 tracking-tight font-display transition-colors">
+                  <h3 className="text-lg font-bold text-slate-950 group-hover:text-indigo-600 mb-3 tracking-tight font-display transition-colors">
                     {service.title}
                   </h3>
-                  <p className="text-sm text-slate-600 group-hover:text-slate-300 leading-relaxed mb-6 transition-colors font-normal">
+                  <p className="text-sm text-slate-600 leading-relaxed mb-6 font-normal">
                     {service.description}
                   </p>
                 </div>
@@ -134,7 +134,7 @@ export default function ServicesSection({
                     }));
                     handleNavigation('contact');
                   }}
-                  className="text-xs font-bold text-indigo-600 group-hover:text-amber-400 inline-flex items-center gap-1 cursor-pointer w-full justify-start pt-3.5 border-t border-slate-200/60 group-hover:border-slate-800/80 transition-colors focus:outline-none focus:ring-2 focus:ring-indigo-500 rounded px-1 mt-2"
+                  className="text-xs font-bold text-indigo-600 group-hover:text-indigo-700 inline-flex items-center gap-1 cursor-pointer w-full justify-start pt-3.5 border-t border-slate-200/60 group-hover:border-indigo-200/80 transition-colors focus:outline-none focus:ring-2 focus:ring-indigo-500 rounded px-1 mt-2"
                 >
                   <span>Inquire About Service</span>
                   <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" aria-hidden="true" />
