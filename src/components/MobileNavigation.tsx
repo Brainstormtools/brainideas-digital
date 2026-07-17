@@ -36,7 +36,7 @@ export default function MobileNavigation({
       animate={{ opacity: 1, height: 'auto' }}
       exit={{ opacity: 0, height: 0 }}
       transition={{ duration: 0.25, ease: 'easeInOut' }}
-      className="lg:hidden absolute left-0 right-0 top-full border-t border-slate-100 bg-white overflow-y-auto max-h-[calc(100vh-5.5rem)] shadow-xl z-30 scrollbar-thin"
+      className="lg:hidden absolute left-0 right-0 top-full border-t border-slate-100 bg-white overflow-y-auto max-h-[85vh] shadow-xl z-30 scrollbar-thin"
       role="navigation"
       aria-label="Mobile Navigation Menu"
     >
