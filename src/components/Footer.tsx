@@ -22,13 +22,13 @@ export default function Footer({ handleNavigation }: FooterProps) {
                 loading="lazy"
               />
               <span className="text-lg font-bold font-display tracking-tight text-white">
-                BrainIdeas<span className="text-indigo-505"> Digital</span>
+                BrainIdeas<span className="text-indigo-600"> Digital</span>
               </span>
             </div>
             <p className="text-xs text-slate-400 leading-relaxed max-w-xs font-normal">
               BrainIdeas Digital builds professional websites for local businesses, helping salons, clinics, restaurants, gyms, and service providers convert public profiles into premium digital engines.
             </p>
-            <div className="pt-2 text-xs text-slate-505 space-y-1 text-slate-500">
+            <div className="pt-2 text-xs text-slate-500 space-y-1">
               <p>📍 Burewala, Pakistan</p>
               <p>🌐 Globally Serving Vercel Networks</p>
             </div>
