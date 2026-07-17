@@ -94,7 +94,7 @@ export default function Header({
               aria-label="BrainIdeas Digital Home"
             >
               <img
-                src="/brainideas-logo.png?v=20260710-4"
+                src="/brainideas-logo-512.png?v=20260710-4"
                 alt="BrainIdeas Digital Logo"
                 className="h-10 w-10 object-contain rounded-md"
                 width="40"
