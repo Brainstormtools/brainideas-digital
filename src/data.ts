@@ -1,34 +1,4 @@
-import { 
-  Sparkles, 
-  MapPin, 
-  MessageSquareCode, 
-  Search, 
-  TrendingUp, 
-  Layers, 
-  Paintbrush, 
-  Wrench, 
-  Smartphone, 
-  FileText, 
-  RefreshCw, 
-  BookOpen, 
-  Building, 
-  CheckCircle2,
-  Scissors,
-  Stethoscope,
-  Utensils,
-  Dumbbell,
-  GraduationCap,
-  Scale,
-  Construction,
-  Calendar,
-  ShoppingBag,
-  Hotel,
-  Shield,
-  HelpCircle,
-  FileCode2,
-  Terminal,
-  Database
-} from 'lucide-react';
+// No imports needed, we store icon names as strings and do not use imported icon components.
 
 export interface ServiceItem {
   id: number;

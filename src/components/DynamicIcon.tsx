@@ -1,5 +1,61 @@
 import React from 'react';
-import * as LucideIcons from 'lucide-react';
+import {
+  Layers,
+  Paintbrush,
+  Wrench,
+  Smartphone,
+  FileText,
+  RefreshCw,
+  Scissors,
+  Stethoscope,
+  Utensils,
+  Dumbbell,
+  GraduationCap,
+  Scale,
+  Construction,
+  Calendar,
+  ShoppingBag,
+  Hotel,
+  Shield,
+  HelpCircle,
+  FileCode2,
+  Terminal,
+  Database,
+  Sparkles,
+  MapPin,
+  Search,
+  MessageSquareCode,
+  Building
+} from 'lucide-react';
+
+const ICONS = {
+  Layers,
+  Paintbrush,
+  Wrench,
+  Smartphone,
+  FileText,
+  RefreshCw,
+  Scissors,
+  Stethoscope,
+  Utensils,
+  Dumbbell,
+  GraduationCap,
+  Scale,
+  Construction,
+  Calendar,
+  ShoppingBag,
+  Hotel,
+  Shield,
+  HelpCircle,
+  FileCode2,
+  Terminal,
+  Database,
+  Sparkles,
+  MapPin,
+  Search,
+  MessageSquareCode,
+  Building
+} as const;
 
 interface DynamicIconProps {
   name: string;
@@ -7,13 +63,6 @@ interface DynamicIconProps {
 }
 
 export default function DynamicIcon({ name, className = "w-6 h-6" }: DynamicIconProps) {
-  // Safe lookup with typing
-  const IconComponent = (LucideIcons as any)[name];
-  
-  if (!IconComponent) {
-    // Fallback icon
-    return <LucideIcons.HelpCircle className={className} />;
-  }
-  
+  const IconComponent = ICONS[name as keyof typeof ICONS] || HelpCircle;
   return <IconComponent className={className} />;
 }

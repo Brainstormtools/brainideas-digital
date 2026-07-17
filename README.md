@@ -1,20 +1,48 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://ai.google.dev/static/site-assets/images/share-ais-513315318.png" />
-</div>
+# BrainIdeas Digital
 
-# Run and deploy your AI Studio app
+BrainIdeas Digital builds professional, conversion-focused websites for local businesses (such as salons, clinics, restaurants, gyms, and local service providers).
 
-This contains everything you need to run your app locally.
+This is a static React/Vite marketing website and does not require any AI API keys or backend services.
 
-View your app in AI Studio: https://ai.studio/apps/b3eb30fa-7334-4685-9d6f-f138e556083b
+## Prerequisites
 
-## Run Locally
+- Node.js (v18 or higher)
+- npm
 
-**Prerequisites:**  Node.js
+## Getting Started
 
+Follow these commands to install dependencies, run the development server, lint, and build the project:
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+### Install Dependencies
+
+```bash
+npm install
+```
+
+### Run Development Server
+
+```bash
+npm run dev
+```
+
+### Lint Code
+
+```bash
+npm run lint
+```
+
+### Build for Production
+
+```bash
+npm run build
+```
+
+### Preview Production Build
+
+```bash
+npm run preview
+```
+
+## Deployment
+
+This website is ready for static deployment on platforms like Vercel or Netlify.
