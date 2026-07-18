@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { Phone, Menu, X, ArrowRight } from 'lucide-react';
+import { Menu, X, ArrowRight, Sun, Moon } from 'lucide-react';
 import MobileNavigation from './MobileNavigation';
 
 interface HeaderProps {
@@ -9,6 +9,8 @@ interface HeaderProps {
   setMobileMenuOpen: (open: boolean) => void;
   handleNavigation: (sectionId: string) => void;
   onMobileMenuExitComplete?: () => void;
+  darkMode: boolean;
+  toggleDarkMode: () => void;
 }
 
 export default function Header({
@@ -16,7 +18,9 @@ export default function Header({
   mobileMenuOpen,
   setMobileMenuOpen,
   handleNavigation,
-  onMobileMenuExitComplete
+  onMobileMenuExitComplete,
+  darkMode,
+  toggleDarkMode
 }: HeaderProps) {
   const menuTriggerRef = React.useRef<HTMLButtonElement>(null);
 
@@ -76,7 +80,7 @@ export default function Header({
       </div>
 
       {/* 2. STICKY HEADER */}
-      <header data-main-header className="sticky top-0 z-40 bg-white/85 backdrop-blur-md border-b border-slate-100 shadow-sm transition-all duration-300 relative">
+      <header data-main-header className="sticky top-0 z-40 bg-white/85 dark:bg-slate-950/85 backdrop-blur-md border-b border-slate-100 dark:border-slate-900 shadow-sm transition-all duration-300 relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
             {/* Logo */}
@@ -101,8 +105,8 @@ export default function Header({
                 height="32"
               />
               <div className="flex flex-col">
-                <span className="text-base md:text-lg font-bold font-display tracking-tight text-slate-950 leading-tight">
-                  BrainIdeas<span className="text-indigo-600"> Digital</span>
+                <span className="text-base md:text-lg font-bold font-display tracking-tight text-slate-950 dark:text-white leading-tight animate-fade-in">
+                  BrainIdeas<span className="text-indigo-600 dark:text-indigo-400"> Digital</span>
                 </span>
                 <span className="text-[9px] uppercase tracking-widest text-slate-400 font-bold font-mono leading-none">Digital Agency</span>
               </div>
@@ -117,59 +121,70 @@ export default function Header({
                 { label: 'Process', id: 'process' },
                 { label: 'Packages', id: 'packages' },
                 { label: 'Portfolio', id: 'portfolio' },
-                { label: 'FAQ', id: 'faq' },
-                { label: 'Contact', id: 'contact' }
+                { label: 'FAQ', id: 'faq' }
               ].map((item) => (
                 <button
                   key={item.id}
                   id={`desktop-nav-${item.id}`}
                   onClick={() => handleNavigation(item.id)}
-                  className={`relative py-1 text-slate-500 hover:text-slate-900 transition-colors duration-200 cursor-pointer focus:outline-none focus:ring-2 focus:ring-indigo-500/50 rounded px-1.5 ${
-                    activeSection === item.id ? 'text-indigo-600 font-semibold' : ''
+                  className={`relative py-1 text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors duration-200 cursor-pointer focus:outline-none focus:ring-2 focus:ring-indigo-500/50 rounded px-1.5 ${
+                    activeSection === item.id ? 'text-indigo-600 dark:text-indigo-400 font-semibold' : ''
                   }`}
                 >
                   {item.label}
                   {activeSection === item.id && (
                     <motion.div 
                       layoutId="activeIndicator" 
-                      className="absolute bottom-0 left-0 right-0 h-0.5 bg-indigo-600 rounded-full" 
+                      className="absolute bottom-0 left-0 right-0 h-0.5 bg-indigo-600 dark:bg-indigo-400 rounded-full" 
                     />
                   )}
                 </button>
               ))}
             </nav>
 
-            {/* Contact quick call action */}
+            {/* Contact & Dark Mode Toggle Quick Action */}
             <div className="hidden lg:flex items-center gap-4">
-              <a 
-                id="header-call-button"
-                href="tel:+923377105205"
-                className="flex items-center gap-1.5 text-slate-500 hover:text-indigo-600 text-[11px] font-bold uppercase tracking-wider font-mono transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 p-1 rounded"
+              <button
+                id="header-dark-mode-toggle"
+                onClick={toggleDarkMode}
+                className="p-2 rounded-xl border border-slate-200 dark:border-slate-800 text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-900 transition-colors focus:outline-none focus:ring-2 focus:ring-indigo-500 cursor-pointer"
+                aria-label={darkMode ? "Switch to light mode" : "Switch to dark mode"}
               >
-                <Phone className="w-3.5 h-3.5 text-indigo-500" aria-hidden="true" />
-                <span>+92 337 7105205</span>
-              </a>
+                {darkMode ? <Sun className="w-4.5 h-4.5 text-amber-500 animate-spin-slow" /> : <Moon className="w-4.5 h-4.5 text-slate-700" />}
+              </button>
+
               <button 
                 id="header-consult-button"
                 onClick={() => handleNavigation('contact')}
-                className="bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-bold uppercase tracking-wider px-4 py-2.5 rounded-xl transition-all duration-200 shadow-sm cursor-pointer focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                className="bg-indigo-600 hover:bg-indigo-700 dark:bg-indigo-500 dark:hover:bg-indigo-600 text-white text-xs font-bold uppercase tracking-wider px-4 py-2.5 rounded-xl transition-all duration-200 shadow-sm cursor-pointer focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
               >
                 Consultation
               </button>
             </div>
 
-            {/* Mobile menu trigger */}
-            <button 
-              id="mobile-menu-trigger"
-              ref={menuTriggerRef}
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="lg:hidden p-2 text-slate-700 hover:text-indigo-600 focus:outline-none focus:ring-2 focus:ring-indigo-500 rounded-lg"
-              aria-label={mobileMenuOpen ? "Close main navigation menu" : "Open main navigation menu"}
-              aria-expanded={mobileMenuOpen}
-              aria-controls="mobile-navigation"
-            >
-              {mobileMenuOpen ? <X className="w-6 h-6" aria-hidden="true" /> : <Menu className="w-6 h-6" aria-hidden="true" />}
-            </button>
+            {/* Mobile Actions (Menu & Dark Mode) */}
+            <div className="flex lg:hidden items-center gap-2">
+              <button
+                id="mobile-dark-mode-toggle"
+                onClick={toggleDarkMode}
+                className="p-2 rounded-xl border border-slate-200 dark:border-slate-800 text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-900 transition-colors focus:outline-none focus:ring-2 focus:ring-indigo-500 cursor-pointer"
+                aria-label={darkMode ? "Switch to light mode" : "Switch to dark mode"}
+              >
+                {darkMode ? <Sun className="w-4.5 h-4.5 text-amber-500" /> : <Moon className="w-4.5 h-4.5 text-slate-700" />}
+              </button>
+
+              <button 
+                id="mobile-menu-trigger"
+                ref={menuTriggerRef}
+                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                className="p-2 text-slate-700 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-indigo-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 rounded-lg"
+                aria-label={mobileMenuOpen ? "Close main navigation menu" : "Open main navigation menu"}
+                aria-expanded={mobileMenuOpen}
+                aria-controls="mobile-navigation"
+              >
+                {mobileMenuOpen ? <X className="w-6 h-6" aria-hidden="true" /> : <Menu className="w-6 h-6" aria-hidden="true" />}
+              </button>
+            </div>
           </div>
         </div>
 

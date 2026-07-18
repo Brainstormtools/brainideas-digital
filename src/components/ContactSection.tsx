@@ -31,20 +31,20 @@ export default function ContactSection({
     <section 
       ref={contactRef}
       id="contact" 
-      className="py-16 md:py-24 bg-white relative"
+      className="py-16 md:py-24 bg-white dark:bg-slate-900 border-t border-slate-100 dark:border-slate-800/60 relative transition-colors duration-300"
     >
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-slate-50/40 to-transparent z-0" aria-hidden="true"></div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <span className="text-xs uppercase font-bold tracking-widest text-indigo-600 font-mono">Immediate Connection</span>
-          <h2 className="text-3xl md:text-4xl font-black font-display tracking-tight text-slate-950 mt-2">
+          <span className="text-xs uppercase font-bold tracking-widest text-indigo-600 dark:text-indigo-400 font-mono">Immediate Connection</span>
+          <h2 className="text-3xl md:text-4xl font-black font-display tracking-tight text-slate-950 dark:text-white mt-2">
             Request a Website Consultation
           </h2>
-          <p className="text-slate-600 text-sm md:text-base mt-4 leading-relaxed">
+          <p className="text-slate-600 dark:text-slate-300 text-sm md:text-base mt-4 leading-relaxed">
             Share a few details about your business and website requirements. After reviewing them, select the WhatsApp button to send your enquiry directly to BrainIdeas Digital.
           </p>
-          <div className="w-16 h-1 bg-indigo-600 mx-auto mt-4 rounded-full" aria-hidden="true"></div>
+          <div className="w-16 h-1 bg-indigo-600 dark:bg-indigo-400 mx-auto mt-4 rounded-full" aria-hidden="true"></div>
         </div>
 
         <div className="grid lg:grid-cols-12 gap-12 max-w-6xl mx-auto items-start">
@@ -101,7 +101,7 @@ export default function ContactSection({
           </div>
 
           {/* Right Lead Inquiry Form */}
-          <div className="lg:col-span-7 bg-white border border-slate-200/70 rounded-2xl p-6 md:p-8 shadow-sm">
+          <div className="lg:col-span-7 bg-white dark:bg-slate-900 border border-slate-200/70 dark:border-slate-800/80 rounded-2xl p-6 md:p-8 shadow-sm">
             
             <AnimatePresence mode="wait">
               {!formSubmitted ? (
@@ -116,7 +116,7 @@ export default function ContactSection({
                   <div className="grid sm:grid-cols-2 gap-6">
                     {/* Name */}
                     <div>
-                      <label className="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-2 font-mono" htmlFor="contact-name">Your Name *</label>
+                      <label className="block text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300 mb-2 font-mono" htmlFor="contact-name">Your Name *</label>
                       <input
                         id="contact-name"
                         type="text"
@@ -125,13 +125,13 @@ export default function ContactSection({
                         placeholder="John Doe"
                         value={formData.name}
                         onChange={handleInputChange}
-                        className="w-full px-4 py-3 bg-slate-50/50 border border-slate-200/80 rounded-xl text-sm focus:outline-none focus:border-indigo-500 focus:ring-4 focus:ring-indigo-500/10 transition-all text-slate-800 font-medium"
+                        className="w-full px-4 py-3 bg-slate-50/50 dark:bg-slate-950/50 border border-slate-200/80 dark:border-slate-800/80 rounded-xl text-sm focus:outline-none focus:border-indigo-500 dark:focus:border-indigo-400 focus:ring-4 focus:ring-indigo-500/10 text-slate-800 dark:text-slate-100 font-medium transition-all"
                       />
                     </div>
 
                     {/* Business Name */}
                     <div>
-                      <label className="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-2 font-mono" htmlFor="contact-biz-name">Business Name *</label>
+                      <label className="block text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300 mb-2 font-mono" htmlFor="contact-biz-name">Business Name *</label>
                       <input
                         id="contact-biz-name"
                         type="text"
@@ -140,7 +140,7 @@ export default function ContactSection({
                         placeholder="My Local Salon / Cafe"
                         value={formData.businessName}
                         onChange={handleInputChange}
-                        className="w-full px-4 py-3 bg-slate-50/50 border border-slate-200/80 rounded-xl text-sm focus:outline-none focus:border-indigo-500 focus:ring-4 focus:ring-indigo-500/10 transition-all text-slate-800 font-medium"
+                        className="w-full px-4 py-3 bg-slate-50/50 dark:bg-slate-950/50 border border-slate-200/80 dark:border-slate-800/80 rounded-xl text-sm focus:outline-none focus:border-indigo-500 dark:focus:border-indigo-400 focus:ring-4 focus:ring-indigo-500/10 text-slate-800 dark:text-slate-100 font-medium transition-all"
                       />
                     </div>
                   </div>
@@ -148,7 +148,7 @@ export default function ContactSection({
                   <div className="grid sm:grid-cols-2 gap-6">
                     {/* Phone or WhatsApp */}
                     <div>
-                      <label className="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-2 font-mono" htmlFor="contact-phone-whatsapp">Phone or WhatsApp Number *</label>
+                      <label className="block text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300 mb-2 font-mono" htmlFor="contact-phone-whatsapp">Phone or WhatsApp Number *</label>
                       <input
                         id="contact-phone-whatsapp"
                         type="tel"
@@ -157,33 +157,33 @@ export default function ContactSection({
                         placeholder="e.g. +92 300 1234567"
                         value={formData.phoneOrWhatsApp}
                         onChange={handleInputChange}
-                        className="w-full px-4 py-3 bg-slate-50/50 border border-slate-200/80 rounded-xl text-sm focus:outline-none focus:border-indigo-500 focus:ring-4 focus:ring-indigo-500/10 transition-all text-slate-800 font-medium"
+                        className="w-full px-4 py-3 bg-slate-50/50 dark:bg-slate-950/50 border border-slate-200/80 dark:border-slate-800/80 rounded-xl text-sm focus:outline-none focus:border-indigo-500 dark:focus:border-indigo-400 focus:ring-4 focus:ring-indigo-500/10 text-slate-800 dark:text-slate-100 font-medium transition-all"
                       />
                     </div>
 
                     {/* Service Needed Dropdown */}
                     <div>
-                      <label className="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-2 font-mono" htmlFor="contact-service-needed">Service Needed *</label>
+                      <label className="block text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300 mb-2 font-mono" htmlFor="contact-service-needed">Service Needed *</label>
                       <select
                         id="contact-service-needed"
                         name="serviceNeeded"
                         value={formData.serviceNeeded}
                         onChange={handleInputChange}
-                        className="w-full px-4 py-3 bg-slate-50/50 border border-slate-200/80 rounded-xl text-sm focus:outline-none focus:border-indigo-500 focus:ring-4 focus:ring-indigo-500/10 transition-all text-slate-800 font-medium cursor-pointer"
+                        className="w-full px-4 py-3 bg-slate-50/50 dark:bg-slate-950/50 border border-slate-200/80 dark:border-slate-800/80 rounded-xl text-sm focus:outline-none focus:border-indigo-500 dark:focus:border-indigo-400 focus:ring-4 focus:ring-indigo-500/10 text-slate-800 dark:text-slate-100 font-medium cursor-pointer"
                       >
-                        <option value="New Website">New Website</option>
-                        <option value="Website Redesign">Website Redesign</option>
-                        <option value="Landing Page">Landing Page</option>
-                        <option value="Local SEO">Local SEO</option>
-                        <option value="Website Maintenance">Website Maintenance</option>
-                        <option value="Not Sure Yet">Not Sure Yet</option>
+                        <option value="New Website" className="dark:bg-slate-900 text-slate-800 dark:text-slate-200">New Website</option>
+                        <option value="Website Redesign" className="dark:bg-slate-900 text-slate-800 dark:text-slate-200">Website Redesign</option>
+                        <option value="Landing Page" className="dark:bg-slate-900 text-slate-800 dark:text-slate-200">Landing Page</option>
+                        <option value="Local SEO" className="dark:bg-slate-900 text-slate-800 dark:text-slate-200">Local SEO</option>
+                        <option value="Website Maintenance" className="dark:bg-slate-900 text-slate-800 dark:text-slate-200">Website Maintenance</option>
+                        <option value="Not Sure Yet" className="dark:bg-slate-900 text-slate-800 dark:text-slate-200">Not Sure Yet</option>
                       </select>
                     </div>
                   </div>
 
                   {/* Brief requirements */}
                   <div>
-                    <label className="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-2 font-mono" htmlFor="contact-requirements">Brief requirements</label>
+                    <label className="block text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300 mb-2 font-mono" htmlFor="contact-requirements">Brief requirements</label>
                     <textarea
                       id="contact-requirements"
                       name="requirements"
@@ -191,7 +191,7 @@ export default function ContactSection({
                       placeholder="Tell us about your services, locations, or special features you'd like on your website..."
                       value={formData.requirements}
                       onChange={handleInputChange}
-                      className="w-full px-4 py-3 bg-slate-50/50 border border-slate-200/80 rounded-xl text-sm focus:outline-none focus:border-indigo-500 focus:ring-4 focus:ring-indigo-500/10 transition-all text-slate-800 font-normal"
+                      className="w-full px-4 py-3 bg-slate-50/50 dark:bg-slate-950/50 border border-slate-200/80 dark:border-slate-800/80 rounded-xl text-sm focus:outline-none focus:border-indigo-500 dark:focus:border-indigo-400 focus:ring-4 focus:ring-indigo-500/10 text-slate-800 dark:text-slate-100 font-normal"
                     ></textarea>
                   </div>
 
@@ -215,21 +215,21 @@ export default function ContactSection({
                   exit={{ opacity: 0 }}
                   className="text-center py-8 px-4"
                 >
-                  <div className="w-16 h-16 bg-indigo-50 text-indigo-600 rounded-full flex items-center justify-center mx-auto mb-6 shadow-inner border border-indigo-100">
-                    <CheckCircle2 className="w-10 h-10 text-indigo-600" aria-hidden="true" />
+                  <div className="w-16 h-16 bg-indigo-50 dark:bg-indigo-950 text-indigo-600 rounded-full flex items-center justify-center mx-auto mb-6 shadow-inner border border-indigo-100 dark:border-indigo-900/60">
+                    <CheckCircle2 className="w-10 h-10 text-indigo-600 dark:text-indigo-400" aria-hidden="true" />
                   </div>
                   
-                  <h3 className="text-2xl font-bold font-display text-slate-950 mb-2">Your WhatsApp Message Is Ready</h3>
-                  <p className="text-slate-600 text-sm mb-8 max-w-md mx-auto font-normal">
-                    Thank you, <span className="font-bold text-slate-950">{formData.name}</span>. Your details have not been sent yet. Select ‘Send Details on WhatsApp’ to deliver them to BrainIdeas Digital.
+                  <h3 className="text-2xl font-bold font-display text-slate-950 dark:text-white mb-2">Your WhatsApp Message Is Ready</h3>
+                  <p className="text-slate-600 dark:text-slate-300 text-sm mb-8 max-w-md mx-auto font-normal">
+                    Thank you, <span className="font-bold text-slate-950 dark:text-white">{formData.name}</span>. Your details have not been sent yet. Select ‘Send Details on WhatsApp’ to deliver them to BrainIdeas Digital.
                   </p>
 
                   {/* Captured details preview */}
-                  <div className="bg-slate-50 border border-slate-200/70 rounded-2xl p-6 text-left text-xs mb-8 space-y-2 max-w-md mx-auto font-mono">
-                    <p><span className="text-slate-400">Name:</span> {formData.name}</p>
-                    <p><span className="text-slate-400">Business:</span> {formData.businessName}</p>
-                    <p><span className="text-slate-400">Service Needed:</span> {formData.serviceNeeded}</p>
-                    <p><span className="text-slate-400">Phone/WhatsApp:</span> {formData.phoneOrWhatsApp}</p>
+                  <div className="bg-slate-50 dark:bg-slate-950 border border-slate-200/70 dark:border-slate-800/80 rounded-2xl p-6 text-left text-xs mb-8 space-y-2 max-w-md mx-auto font-mono text-slate-800 dark:text-slate-200">
+                    <p><span className="text-slate-400 dark:text-slate-500 font-medium">Name:</span> {formData.name}</p>
+                    <p><span className="text-slate-400 dark:text-slate-500 font-medium">Business:</span> {formData.businessName}</p>
+                    <p><span className="text-slate-400 dark:text-slate-500 font-medium">Service Needed:</span> {formData.serviceNeeded}</p>
+                    <p><span className="text-slate-400 dark:text-slate-500 font-medium">Phone/WhatsApp:</span> {formData.phoneOrWhatsApp}</p>
                   </div>
 
                   <div className="space-y-4 max-w-md mx-auto">
@@ -248,7 +248,7 @@ export default function ContactSection({
                     <button 
                       id="submit-another-inquiry"
                       onClick={resetForm}
-                      className="text-xs text-indigo-600 hover:text-indigo-800 underline font-semibold block mx-auto cursor-pointer focus:outline-none"
+                      className="text-xs text-indigo-600 dark:text-indigo-400 hover:text-indigo-800 dark:hover:text-indigo-300 underline font-semibold block mx-auto cursor-pointer focus:outline-none"
                     >
                       Submit Another Inquiry Form
                     </button>

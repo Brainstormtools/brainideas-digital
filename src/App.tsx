@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import Header from './components/Header';
 import HeroSection from './components/HeroSection';
+import TrustIndicators from './components/TrustIndicators';
 import ServicesSection from './components/ServicesSection';
 import IndustriesSection from './components/IndustriesSection';
 import ProcessSection from './components/ProcessSection';
@@ -11,8 +12,35 @@ import FAQSection from './components/FAQSection';
 import ContactSection from './components/ContactSection';
 import WhatsAppButton from './components/WhatsAppButton';
 import Footer from './components/Footer';
+import MobileFloatingCta from './components/MobileFloatingCta';
 
 export default function App() {
+  // Dark Mode state
+  const [darkMode, setDarkMode] = useState(() => {
+    if (typeof window !== 'undefined') {
+      const saved = localStorage.getItem('darkMode');
+      if (saved !== null) {
+        return saved === 'true';
+      }
+      return window.matchMedia('(prefers-color-scheme: dark)').matches;
+    }
+    return false;
+  });
+
+  // Apply dark mode theme class to document element
+  useEffect(() => {
+    if (darkMode) {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+    localStorage.setItem('darkMode', String(darkMode));
+  }, [darkMode]);
+
+  const toggleDarkMode = () => {
+    setDarkMode(prev => !prev);
+  };
+
   // Mobile menu state
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   
@@ -179,7 +207,7 @@ I would like to request a website consultation.
   };
 
   return (
-    <div className="min-h-screen flex flex-col font-sans bg-slate-50/50 text-slate-800 selection:bg-indigo-600 selection:text-white">
+    <div className="min-h-screen flex flex-col font-sans bg-slate-50/50 dark:bg-slate-950 text-slate-800 dark:text-slate-100 selection:bg-indigo-600 selection:text-white pb-16 sm:pb-0 transition-colors duration-300">
       
       <Header 
         activeSection={activeSection}
@@ -187,6 +215,8 @@ I would like to request a website consultation.
         setMobileMenuOpen={setMobileMenuOpen}
         handleNavigation={handleNavigation}
         onMobileMenuExitComplete={handleMobileMenuExitComplete}
+        darkMode={darkMode}
+        toggleDarkMode={toggleDarkMode}
       />
 
       <main className="flex-grow">
@@ -194,6 +224,8 @@ I would like to request a website consultation.
           handleNavigation={handleNavigation}
           homeRef={sectionsRef.home}
         />
+
+        <TrustIndicators />
 
         <ServicesSection
           handleNavigation={handleNavigation}
@@ -214,6 +246,7 @@ I would like to request a website consultation.
         <PricingSection
           packagesRef={sectionsRef.packages}
           handlePackageSelect={handlePackageSelect}
+          handleNavigation={handleNavigation}
         />
 
         <PortfolioSection
@@ -238,6 +271,11 @@ I would like to request a website consultation.
       </main>
 
       <Footer handleNavigation={handleNavigation} />
+      
+      <MobileFloatingCta 
+        handleNavigation={handleNavigation}
+        getWhatsAppLink={getWhatsAppLink}
+      />
       
       <WhatsAppButton />
     </div>

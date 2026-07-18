@@ -36,7 +36,7 @@ export default function MobileNavigation({
       animate={{ opacity: 1, height: 'auto' }}
       exit={{ opacity: 0, height: 0 }}
       transition={{ duration: 0.25, ease: 'easeInOut' }}
-      className="lg:hidden absolute left-0 right-0 top-full border-t border-slate-100 bg-white overflow-y-auto max-h-[85vh] shadow-xl z-30 scrollbar-thin"
+      className="lg:hidden absolute left-0 right-0 top-full border-t border-slate-100 dark:border-slate-900 bg-white dark:bg-slate-950 overflow-y-auto max-h-[85vh] shadow-xl z-30 scrollbar-thin"
       role="navigation"
       aria-label="Mobile Navigation Menu"
     >
@@ -48,8 +48,7 @@ export default function MobileNavigation({
           { label: 'Process', id: 'process' },
           { label: 'Packages', id: 'packages' },
           { label: 'Portfolio', id: 'portfolio' },
-          { label: 'FAQ', id: 'faq' },
-          { label: 'Contact', id: 'contact' }
+          { label: 'FAQ', id: 'faq' }
         ].map((item) => (
           <button
             key={item.id}
@@ -57,8 +56,8 @@ export default function MobileNavigation({
             onClick={() => handleNavigation(item.id)}
             className={`text-left py-3 px-4 rounded-xl text-base font-medium transition-colors flex justify-between items-center cursor-pointer focus:outline-none focus:ring-2 focus:ring-indigo-500 ${
               activeSection === item.id
-                ? 'bg-indigo-50 text-indigo-600' 
-                : 'text-slate-600 hover:bg-slate-50 hover:text-slate-900'
+                ? 'bg-indigo-50 dark:bg-indigo-950/50 text-indigo-600 dark:text-indigo-400' 
+                : 'text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-900 hover:text-slate-900 dark:hover:text-white'
             }`}
           >
             <span>{item.label}</span>
@@ -69,9 +68,9 @@ export default function MobileNavigation({
             id="mobile-call-button"
             href="tel:+923377105205"
             onClick={() => setMobileMenuOpen(false)}
-            className="flex items-center justify-center gap-2 bg-slate-100 hover:bg-slate-200 text-slate-800 text-sm font-semibold py-3 rounded-xl border border-slate-200 transition-colors focus:outline-none focus:ring-2 focus:ring-indigo-500"
+            className="flex items-center justify-center gap-2 bg-slate-100 dark:bg-slate-900 hover:bg-slate-200 dark:hover:bg-slate-800 text-slate-800 dark:text-slate-200 text-sm font-semibold py-3 rounded-xl border border-slate-200 dark:border-slate-800 transition-colors focus:outline-none focus:ring-2 focus:ring-indigo-500"
           >
-            <Phone className="w-4 h-4 text-indigo-600" aria-hidden="true" />
+            <Phone className="w-4 h-4 text-indigo-600 dark:text-indigo-400" aria-hidden="true" />
             <span>Call Us</span>
           </a>
           <a 

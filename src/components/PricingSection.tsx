@@ -1,15 +1,19 @@
 import React from 'react';
+import { motion } from 'motion/react';
 import { Check } from 'lucide-react';
 import { PACKAGES } from '../data';
+import RoiCalculator from './RoiCalculator';
 
 interface PricingSectionProps {
   packagesRef: React.RefObject<HTMLDivElement | null>;
   handlePackageSelect: (packageName: string) => void;
+  handleNavigation: (sectionId: string) => void;
 }
 
 export default function PricingSection({
   packagesRef,
-  handlePackageSelect
+  handlePackageSelect,
+  handleNavigation
 }: PricingSectionProps) {
   return (
     <section 
@@ -21,7 +25,13 @@ export default function PricingSection({
       <div className="absolute right-1/4 top-10 w-[30rem] h-[30rem] bg-indigo-950/20 rounded-full blur-3xl pointer-events-none z-0" aria-hidden="true"></div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="text-center max-w-3xl mx-auto mb-16">
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-80px" }}
+          transition={{ duration: 0.5 }}
+          className="text-center max-w-3xl mx-auto mb-16"
+        >
           <span className="text-xs uppercase font-bold tracking-widest text-indigo-400 font-mono">Pricing Guidelines</span>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-black font-display tracking-tight text-white mt-2">
             Flexible Service Packages
@@ -30,12 +40,16 @@ export default function PricingSection({
             Choose a base plan that fits your current business scale. All packages are built using premium, responsive, and mobile-friendly layouts.
           </p>
           <div className="w-16 h-1 bg-amber-500 mx-auto mt-4 rounded-full" aria-hidden="true"></div>
-        </div>
+        </motion.div>
 
         <div className="grid lg:grid-cols-3 gap-8 items-stretch max-w-6xl mx-auto">
-          {PACKAGES.map((pkg) => (
-            <div 
+          {PACKAGES.map((pkg, index) => (
+            <motion.div 
               key={pkg.id}
+              initial={{ opacity: 0, y: 25 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ duration: 0.5, delay: index * 0.08 }}
               className={`bg-slate-900/40 border p-8 flex flex-col justify-between relative transition-all duration-300 rounded-2xl ${
                 pkg.popular 
                   ? 'border-indigo-500 ring-4 ring-indigo-500/10 bg-slate-900/90 shadow-sm' 
@@ -83,9 +97,11 @@ export default function PricingSection({
               >
                 {pkg.ctaText}
               </button>
-            </div>
+            </motion.div>
           ))}
         </div>
+
+        <RoiCalculator handleNavigation={handleNavigation} />
 
         <p className="text-center text-xs text-slate-400 italic mt-12 max-w-md mx-auto">
           📋 Note: Final pricing depends on total pages, custom copywriting, specific asset features, and periodic update structures.
